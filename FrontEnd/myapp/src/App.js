@@ -7,18 +7,14 @@ import HeroSection from "./components/HeroSection/HeroSection";
 
 function App() {
   return (
-    <>
-      <div className="main-container">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HeroSection />}></Route>
-            <Route path="/register" element={<Signup />}></Route>
-            <Route path="/home" element={<Home />}></Route>
-            <Route path="/login" element={<Login />}></Route>
-          </Routes>
-        </BrowserRouter>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HeroSection />} />
+        <Route path="/register" element={<Signup />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
