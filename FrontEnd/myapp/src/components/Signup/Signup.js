@@ -15,10 +15,17 @@ function Signup(props) {
       .post("http://localhost:3001/register", { name, email, password })
       .then((result) => {
         console.log(result);
-        if (result.data === "success") alert("Signup Successful!!!!");
-        navigate("/login");
+        if (result.data.success) {
+          alert("Signup Successful!!!!");
+          // Store the auth token if needed
+          localStorage.setItem("authtoken", result.data.authtoken);
+          navigate("/login");
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        alert("Signup failed. Please try again.");
+      });
   };
 
   return (

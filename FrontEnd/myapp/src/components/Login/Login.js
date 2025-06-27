@@ -13,7 +13,9 @@ function Login(props) {
       .post("http://localhost:3001/login", { email, password })
       .then((result) => {
         console.log(result);
-        if (result.data === "Success") {
+        if (result.data.success) {
+          // Store the auth token if needed
+          localStorage.setItem("authtoken", result.data.authtoken);
           // props.showAlert("Account login Successfully","Success")
           navigate("/home");
         } else {
@@ -21,7 +23,11 @@ function Login(props) {
           navigate("/logout");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        // Handle login error
+        navigate("/logout");
+      });
   };
 
   return (
